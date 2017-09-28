@@ -1,0 +1,1248 @@
+
+// Scaffolding
+*, *:before, *:after { box-sizing: border-box; font-family: Raleway; }
+body { background-color: #f5f5f5; color: #888; font-size: 14px; font-family: Verdana, Arial, sans-serif; line-height: 20px; min-height:100vh; }
+a { text-decoration: none; transition: all 0.3s linear 0s; }
+
+.area {
+    display: flex; flex-flow: row wrap; margin-left: auto; margin-right: auto;
+    @media (min-width: 768px) { width: 750px; }
+    @media (min-width: 992px) { width: 970px; }
+    @media (min-width: 1200px) { width: 1140px; }
+}
+
+// Navigation component
+// ----------
+
+// Variables
+@navbar-height:              64px;
+@navbar-background:          #000;
+@navbar-border:              #ddd;
+
+@navbar-collapse-breakpoint: 768px;
+
+@navbar-item-font-size:      14px;
+@navbar-item-border-width:   4px;
+@navbar-item-color:          #fff;
+@navbar-item-active-color:   #333;
+@navbar-item-border:         transparent;
+@navbar-item-active-border:  #673ab7;
+@form-color:                 #020202;
+// Component skeleton
+
+
+.navbar-component {
+    background-color: @navbar-background;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+    
+    & > .navbar {
+        margin-bottom:0;
+        justify-content: space-between;
+        width:100%;
+    }
+}
+
+.form {
+    font-family:Raleway;
+    background-color:black;
+    padding-top:2vw;
+    color:white;
+    text-align:center;
+    padding-bottom:2vw;
+    height:70vh;
+    & > form > button {
+        background-color:black;
+
+    }
+}
+
+.main-component {
+
+    background-color: @navbar-background;
+    & > .mainrow {
+
+        justify-content: space-between;
+        display:flex;
+        text-align:center;
+        white-space: nowrap;
+
+        @media (min-width: @navbar-collapse-breakpoint){
+            display: flex;
+        }
+        @media (max-width: @navbar-collapse-breakpoint){
+            width:100%;
+        }
+
+    }
+    & > .signup {
+        width:45%;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;
+        vertical-align:middle;
+        background-color:inherit;
+        color:white;
+    }
+    & > .signin {
+        width:45%;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;
+        vertical-align:middle;
+        background-color:inherit;
+        color:white;
+    }
+    & > .logout {
+        width:45%;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;
+        vertical-align:middle;
+        background-color:inherit;
+        color:white;
+    }
+    & > .mainrow > .image2 {
+
+        background:url(../img/updatedmain1.jpg) 0px 0px / cover no-repeat;
+        background-position:  center;
+        background-repeat: no-repeat;
+        text-align:center;
+        color:@navbar-item-color;
+        height: 40.15vw;
+        width: 100vw;
+    }
+    & > .mainrow > .image2 > .text1 {
+        font-size:7em;
+        text-align:center;
+        align-content:center;
+        line-height:9.9vw;
+        margin-left:auto;
+        margin-right:auto;
+        padding:2%;
+        @media (max-width: 1080px){
+            font-size:4em;
+            padding:1%;
+            margin-top:6%;
+
+
+        }
+        @media (max-width: @navbar-collapse-breakpoint){
+            font-size:2.5em;
+            padding:0%;
+            padding-bottom:1vw;
+      
+
+        }
+        @media (max-width:390px){
+            font-size:1.75em;
+        }
+    }
+
+
+
+
+    & > .row1 {
+        justify-content: space-between;
+        display:flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        white-space: nowrap;
+        @media (min-width: @navbar-collapse-breakpoint) {
+          display: flex;
+        }
+
+        @media (max-width: @navbar-collapse-breakpoint) {
+          max-height: 50vh;
+          flex-direction:column;
+          align-content:space-between;
+        }
+
+    }
+    & > .row1 > .image {
+        height:100%;
+        width: 50%;
+        @media (max-width: @navbar-collapse-breakpoint){
+            width:100%;
+            height:6em;
+            
+        }
+    }
+    & > .row1 > .image > .buy {
+        color:white;
+        
+        font-weight: bold;
+        font-size: 4em;
+        text-align: center;
+        margin:0 auto;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        @media (max-width: @navbar-collapse-breakpoint) {
+
+            position: relative;
+            top: 60%;
+            width:100%;
+                        
+            
+        }
+        @media (max-width: 390px){
+            font-size:1.5em;
+        }
+    }
+
+    & > .row1 > .image2 {
+        height:26.77vw;
+        width:50%;
+        background:url(../img/secondary1.jpg) 0px 0px / cover no-repeat;
+        background-position:  center; 
+        background-repeat: no-repeat;
+        @media (max-width: @navbar-collapse-breakpoint) {
+            width:80%;
+            display:none;
+        }
+    }
+    & > .row2 {
+        justify-content: space-between;
+        height: 32.77vw;
+        flex-flow: row nowrap;
+        align-items: stretch;
+        display:block;
+        white-space: nowrap;
+        @media (max-width: @navbar-collapse-breakpoint) {
+            height:55.34vw;
+            flex-flow: row wrap;
+            justify-content: center;
+
+        }
+    }
+    & > .row2 > .image3.a {
+        order:1;
+        display:inline-block;
+        width:25%;
+        justify-content: space-between;
+        height: 32.77vw;
+        background:url(../img/decalOne1.jpg) 0px 0px / cover no-repeat;
+        background-position:  stretch; 
+        background-repeat: no-repeat;
+        @media (max-width: @navbar-collapse-breakpoint){
+            width:50%;
+            height:auto;
+            order:2;
+        }
+
+
+    }
+    & > .row2 > .image3.b {
+        order:2;
+        display:inline-block;
+        width:49%;
+        height: 32.77vw;
+        background:url(../img/decalTwo1.jpg) 0px 0px / cover no-repeat;
+        background-position:  stretch; 
+        background-repeat: no-repeat;
+        @media (max-width: @navbar-collapse-breakpoint){
+            display:block;
+            align-items:flex-start;
+            width:100%;
+            height:90%;
+            order:1;
+
+        }
+    }
+    & > .row2 > .image3.c {
+        order:3;
+        display:inline-block;
+        width:25%;
+        height: 32.77vw;
+        background:url(../img/decalThree1.jpg) 0px 0px / cover no-repeat;
+        background-position:  stretch; 
+        background-repeat: no-repeat;
+        @media (max-width: @navbar-collapse-breakpoint){
+            width:50%;
+            height:auto;
+            order:2;
+        }
+    }
+
+
+    & > .mainTwo {
+        width:100%;
+        display:block;
+        padding-top:3vw;
+        padding-bottom:3vw;
+        text-align: center;
+        font-weight: bold;
+        position:relative;
+        bottom:50%;
+        font-size:1em;
+        color: @navbar-item-color;
+        @media(max-width:1080px){
+            font-size:.8em;
+        }
+        @media (max-width: @navbar-collapse-breakpoint) {
+            padding-top:1em;
+            padding-bottom:1em;
+            font-size:.6em;
+        }
+
+    }
+    & > .mainTwo > h1 {
+        font-size:6em;
+        @media (max-width: @navbar-collapse-breakpoint) {
+            
+            font-size:4em;
+        }
+
+    }
+    & > .mainTwo > h3 {
+        font-size:5em;
+        @media (max-width: @navbar-collapse-breakpoint) {
+            
+            font-size:3em;
+        }
+
+    }
+
+    & > .row3 {
+        font-weight:bold;
+        justify-content: space-between;
+        flex-flow: row nowrap;
+        align-items: center;
+        white-space: nowrap;
+        display:flex;
+        height:32.77vw;
+        margin-left:50px;
+        margin-right:50px;
+        @media (min-width: @navbar-collapse-breakpoint) {
+            display: flex;
+        }
+
+        @media (max-width: @navbar-collapse-breakpoint) {
+            max-height: 65.34vw;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+        @media(max-width: 390px){
+            height:70vh;
+        }
+    }
+    & .row3 > .item1 {
+        grid-column: 2/4;
+        text-align:center;
+        background:url(../img/jacket1.png) 0px 0px / cover no-repeat;
+        background-size:80% auto;
+        background-position:  center;
+        background-repeat: no-repeat;
+        height:100%;
+        width:25vw;
+        display:flex;
+        flex-flow:column;
+        align-items:center;
+        @media (max-width: @navbar-collapse-breakpoint){
+            width:30%;
+        }
+        @media(max-width: 390px){
+            background-size:40% auto;
+            width:90vw;
+            margin-left:auto;
+            margin-right:auto;
+            height:30%;
+        }
+
+    }
+    & .row3 > .item2 {
+        grid-column: 4/6;
+        text-align:center;
+        background:url(../img/shirt.png) 0px 0px / cover no-repeat;
+        background-size:80% auto;
+        background-position:  center;
+        background-repeat: no-repeat;
+        height:100%;
+        width:25vw;
+        display:flex;
+        flex-flow:column;
+        align-items:center;
+        @media (max-width: @navbar-collapse-breakpoint){
+            width:30%;
+        }
+        @media(max-width: 390px){
+            background-size:40% auto;
+            width:90vw;
+            margin-left:auto;
+            margin-right:auto;
+            height:30%;
+        }
+
+    }
+    & .row3 > .item3 {
+        grid-column: 6/8;
+        text-align:center;
+        background:url(../img/jacket2.png) 0px 0px / cover no-repeat;
+        background-size:80% auto;
+        background-position:  center;
+        background-repeat: no-repeat;
+        height:100%;
+        width:25vw;
+        display:flex;
+        flex-flow:column;
+        align-items:center;
+        @media (max-width: @navbar-collapse-breakpoint){
+            width:30%;
+        }
+        @media(max-width: 390px){
+            background-size:40% auto;
+            width:90vw;
+            margin-left:auto;
+            margin-right:auto;
+            height:30%;
+        }
+    }
+
+    & > .row3 > .item1 > .viewLink {
+        color: @navbar-item-color;
+        font-size:1.75em;
+        border: 1px solid white;
+        padding-left:1em;
+        padding-right:1em;
+        text-align:left;
+        margin-left:auto;
+        margin-right:auto; 
+        background-color: rgba(0, 0, 0, 0.5);
+        position:relative;
+        top:25%;
+        @media (max-width: @navbar-collapse-breakpoint) {
+            font-size:.75em;
+            position:relative;
+            top:50%;
+            display:table;
+        }
+       @media (max-width: 630px) and (mix-width:390px){
+            padding-left:.5rem;
+            padding-right:.5rem;
+            position:relative;
+            top:30%;
+            font-size:.5em;
+        }
+        @media (max-width:390px){
+            position:relative;
+            top:1%;
+            font-size:.27em;
+        }
+
+
+    }
+    & > .row3 > .item2 > .viewLink {
+        color: @navbar-item-color;
+        font-size:1.75em;
+        padding-left:1em;
+        padding-right:1em;
+        text-align:left;
+        margin-left:auto;
+        margin-right:auto; 
+        border: 1px solid white;
+        height:auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        position:relative;
+        top:25%;
+
+        @media (max-width: @navbar-collapse-breakpoint) {
+            font-size:.75em;
+            position:relative;
+            top:50%;
+            display:table;
+        }
+        @media (max-width: 630px) and (mix-width:390px){
+            padding-left:.5rem;
+            padding-right:.5rem;
+            position:relative;
+            top:30%;
+            font-size:.5em;
+        }
+        @media (max-width:390px){
+            position:relative;
+            top:1%;
+            font-size:.27em;
+        }
+    }
+    & > .row3 > .item3 > .viewLink {
+        color: @navbar-item-color;
+        font-size:1.75em;
+        padding-left:1em;
+        padding-right:1em;
+        text-align:left;
+        margin-left:auto;
+        margin-right:auto;
+        height:auto;
+        border: 1px solid white;
+        background-color: rgba(0, 0, 0, 0.5);
+        position:relative;
+        top:25%;
+        @media (max-width: @navbar-collapse-breakpoint) {
+            font-size:.75em;
+            position:relative;
+            top:50%;
+            display:table;
+        }
+        @media (max-width: 630px) and (mix-width:390px){
+            padding-left:.5rem;
+            padding-right:.5rem;
+            position:relative;
+            top:30%;
+            font-size:.5em;
+        }
+        @media (max-width:390px){
+            position:relative;
+            top:1%;
+            font-size:.27em;
+        }
+    }
+    & > .row3 > .item1 > p {
+        padding-top:5%;
+        color: @navbar-item-color;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:center;
+        width:25vw;
+        font-size:1.35em;
+        @media (max-width: @navbar-collapse-breakpoint){
+            width:15.5vw;
+            padding-top:2.5%;
+            font-size:0.85em;
+        }
+
+    }
+
+    & > .row3 > .item2 > p {
+        padding-top:5%;
+        color: @navbar-item-color;
+        margin-left:auto;
+        margin-right:auto;
+        font-size:1.35em;
+        width:25vw;
+        text-align:center;
+        vertical-align:top;
+        @media (max-width: @navbar-collapse-breakpoint){
+            width:14.5vw;
+            padding-top:2.5%;
+            font-size:0.85em;
+        }   
+    }
+    & > .row3 > .item3 > p {
+        padding-top:5%;
+        color: @navbar-item-color; 
+        margin-left:auto;
+        margin-right:auto;
+        position:relative;
+        width:25vw;
+        font-size:1.35em;
+        text-align:center;
+        vertical-align:top;
+
+        @media (max-width: @navbar-collapse-breakpoint){
+            width:15.5vw; 
+            padding-top:2.5%;
+            font-size:0.85em;
+        }
+    }
+    & > .row4 {
+        justify-content: space-around;
+        flex-flow: row nowrap;
+        align-items: center;
+        white-space: nowrap;
+        display:flex;
+        width:100%;
+        height:32.77vw;
+        background:url(../img/aboutxxy1.jpg) 0px 0px / cover no-repeat;
+        background-position:  center;
+        background-repeat: no-repeat;
+        font-size:1em;
+        @media (max-width:1400px){
+            font-size:.9em;
+        }
+        @media(max-width:1200px){
+            font-size:.8em;
+        }
+        @media(max-width:1100px){
+            font-size:.7em;
+        }
+        @media(max-width:1000px){
+            font-size:.6em;
+        }
+        @media(max-width:850px){
+            font-size:.5em;
+        }
+        
+
+        @media (max-width: @navbar-collapse-breakpoint) {
+            max-height: 65.34vw;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+    }
+    & > .row4 >  .text {
+        color: @navbar-item-color;
+
+        margin-left:auto;
+        margin-right:auto;
+        
+        height:100%;
+        width:50%;
+        text-align: right;
+        align-content:center;
+        position:relative;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding-left:4em;
+        padding-right:2em;
+        white-space:normal;
+        @media (max-width:@navbar-collapse-breakpoint){
+            width:100%;
+            text-align:center;
+            padding-left:6em;
+            padding-right:6em;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: inherit;
+        }
+    }
+    & > .row4 > .text > p {
+        
+        line-height:1.7vw;
+        font-size:1.35em;
+        padding:.5vw;
+        text-align:right;
+        padding-right:2em;
+        @media (max-width:@navbar-collapse-breakpoint){
+            width:100%;
+            font-size:1.5vw;
+            text-align:center;
+            padding-left:3vw;
+            padding-right:3vw;
+        }
+        
+    } 
+    & > .row4 > .text > h1 {
+        postion:relative;
+        top:10%;
+        font-size:4em;
+        padding-right:.725em;
+        text-align:right;
+
+ 
+        @media (max-width:@navbar-collapse-breakpoint){
+            width:100%;
+            text-align:center;
+            padding-left:3vw;
+            padding-right:3vw;
+        }
+
+    }
+    & > .row4 > .blank {
+        width:50%;
+        position:relative;
+
+    }
+    & .row5 > {
+
+        color:white;
+        width:100%;
+        display:flex;
+        height:33.77vw;
+        justify-content: space-around;
+        flex-flow: row nowrap;
+        align-items: center;
+        white-space: normal;
+        text-align:center;
+        @media (max-width:@navbar-collapse-breakpoint){
+            height:67.34vw;
+            flex-flow:row wrap;
+        }
+    }
+    & .row5 > .contactForm {
+        text-align:right;
+        margin-left:auto;
+        margin-right:auto;
+        width:50%;
+        margin-right:3vw;
+        vertical-align:baseline;
+        text-align:center;
+        background-color: @form-color;
+        padding-left:20vw; 
+        @media (max-width: @navbar-collapse-breakpoint){
+            order:2;
+            padding:0%;
+            width:80%;
+            margin:0%;
+        }
+    }
+    & .row5 > .contactForm > .form-group > .form-control {
+        width:80%;
+        display:block;
+        line-height:2vw;
+        text-align:center;
+        margin:1%;
+        vertical-align:middle;
+        margin-left:auto;
+        margin-right:auto;
+        background-color: white;
+        display:block;
+        @media (max-width: @navbar-collapse-breakpoint){
+            line-height:1vw;   
+        }
+
+    }
+    & .row5 > .contactForm > .form-group > #send {
+        background-color:@form-color;
+        color:white;
+        text-align:center;
+        padding:0;
+        width:20%;
+        position:relative;
+        left:30%;
+        font-size:1vw;
+        height:2vw;
+        text-transform:capitalize;
+        font-weight:bold;
+        @media (max-width: @navbar-collapse-breakpoint){
+            justify-content:center;
+            position:relative;
+            left:0;
+            font-size:2vw;
+            margin-top:2vw;
+            height:5vw;
+            
+            
+        }
+    }
+    
+    & .row5 > .contactText{
+        margin-left:3vw;
+        width:50%;
+        font-weight: bold;
+        text-align:left;
+        line-height:.5vw;
+        vertical-align:center;
+        background-color: @form-color;
+        @media (max-width: @navbar-collapse-breakpoint){
+            order:1;
+            text-align: center;
+            width:100%;
+        }
+    }
+    & .row5 > .contactText > h1{
+        text-align:left;
+        margin-left:auto;
+        margin-right:auto;
+        font-size: 3vw;
+        padding-bottom:2vw;
+        @media (max-width: @navbar-collapse-breakpoint){
+            order:1;
+            text-align: center;
+            width:100%;
+        }
+    }
+    & .row5 > .contactText > p{
+        padding-right:20vw;
+        line-height:2vw;
+        margin-left:auto;
+        margin-right:auto;
+        font-size: 1vw;
+        @media (max-width: @navbar-collapse-breakpoint){
+            text-align: center;
+            width:100%;
+            padding-left:8em;
+            padding-right:8em;
+        }
+    }
+    & .mailingList {
+        color:white;
+        width:100%;
+        display:block;
+        text-align: center;
+        font-size:1em;
+        padding-bottom:2em;
+        @media (max-width: @navbar-collapse-breakpoint){
+            font-size:.75em;
+        }
+        @media (max-width:550px){
+            font-size: .55em;
+        }
+
+    
+    }
+    & .mailingList > h1 {
+        font-size:4em;
+        padding:0;
+
+    }
+    & .mailingList > h4 {
+        font-size:2.6em;
+        font-family:georgia;
+        font-weight:normal;
+        margin-bottom:1.3em;
+        margin-top:1.3em;
+
+    }
+    & .mailingList > .form-group {
+        margin-left:30vw;
+        margin-right:30vw;
+        padding-bottom:4em;
+    }
+    & .mailingList > .form-group > .form-control {
+        width:100%;
+        height:1.8em;
+        margin-bottom:.2em;
+        padding:0;
+        font-size:1.25em;
+        background-color:@form-color;
+        color:white;
+        text-align:center;
+        @media (max-width: @navbar-collapse-breakpoint){
+        }
+
+    }
+    & h1 {
+        margin:0 auto;
+        color:white;
+        text-align:center;
+        font-size:4.3em;
+        font-weight:500;
+        padding-top:2vw;
+        padding-bottom:2vw;
+        @media(max-width: @navbar-collapse-breakpoint) {
+            font-size:2.5em;
+        }
+
+    }
+    & .showcase {
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    & .showcase > .product {
+        margin-left:5vw;
+        margin-right:5vw;
+        padding:2vw;
+        flex: 1 1 0; /* Prevent the extra space around content */
+        text-align: center; /* Align text on center */
+        display: flex; /* Display as flex */
+        flex-direction: column; /* Display flex in column */
+        align-items: center; /* Align items on center */
+        max-width: 400px; /* Set max-width so the last items will behave in a more traditional way */
+    }
+    & .showcase > .product > .image > a > img {
+        width:300px;
+        height:300px;
+        
+    }
+
+    & .showcase > .product > p {
+        font-size:;
+        text-align:center;
+        color:white;
+    }
+
+    & .product {
+        font-family:inherit;
+        color:white;
+        width:100vw;
+        text-align:center;
+        margin-left:auto;
+        margin-right:auto;
+        display:flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap:wrap;
+
+        
+    }
+    & .product > .title {
+        font-size:5em;
+        text-align:center;
+        width:100%;
+        @media(max-width: @navbar-collapse-breakpoint) {
+            font-size:2em;
+        }
+    }
+    & .product > .page-header {
+        width:100%;
+    }
+    & .product > .image {
+        width:100%;
+        margin-left:auto;
+        margin-right:auto;
+        height:auto;
+    }
+    & .product > .image > img {
+        width:20%;
+        height:auto;
+        @media(max-width: @navbar-collapse-breakpoint) {
+            width:50%;
+        }
+    }
+    & .product > .info {
+        order:1;
+        text-align:left;
+        width:50%;
+        padding-right:10vw;
+        margin-left:10vw;
+        @media(max-width: @navbar-collapse-breakpoint) {
+            width:100%;
+        }
+        @media(max-width: 975px) {
+            width:100%;
+            text-align:center;
+        }
+    }
+    
+    & .product > .purchase {
+        order:2;
+        text-align:left;
+        width:30%;
+        margin-right:10vw;
+        padding-left:10vw;
+        @media(max-width: @navbar-collapse-breakpoint) {
+            width:100%;
+            text-align:center;
+        }
+        @media(max-width: 975px){
+            width:100%;
+            text-align:center;
+        }
+    }
+    & .product > .purchase > .add {
+        margin: 40px 0px 0px 0px;
+        height: 75px;
+        font-size: 1.7em;
+        font-weight: 600;
+        color: #444;
+        background-color:#fff;
+        padding-left: 7vw;
+        padding-right: 7vw;
+        padding-top: 1.35vw;
+        padding-bottom: 1.35vw;
+        position:relative;
+        top:55px;
+        @media(max-width: @navbar-collapse-breakpoint) {
+            width:60%;
+            text-align:center;
+            margin-bottom:10vw;
+            position:relative;
+            top:25px;
+        }
+        @media(max-width: 975px){
+            width:100%;
+            width:60%;
+            text-align:center;
+            margin-bottom:10vw;
+            position:relative;
+            top:25px
+        }
+    }
+    & .checkout {
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        align-items: center;
+        font-family:inherit;
+        color:white;
+        padding-left:10vw;
+        padding-right:10vw;
+        min-height:930px;
+        @media (max-width:600px){
+            display:block;
+        }
+        @media(max-width: @navbar-collapse-breakpoint){
+            padding-left:2vw;
+            padding-right:2vw;
+            padding-top: 2vw;
+            padding-bottom: 2vw;
+        }
+    }
+    & .checkout > .title {
+        padding-bottom:20px;
+    }
+    & .checkout > .title > h2 {
+        font-size:4em;
+        text-align:center;
+        padding-top:10px;
+
+    }
+    & .checkout > .smallform {
+        display:block;
+        width:90vw;
+        text-align:center;
+    }
+    & .checkout > .smallform > img{
+        height:100px;
+        width:100px;
+    }
+    & .checkout > .smallform > .cartquantity {
+        text-align:center;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    & .checkout > .smallform > .price {
+        text-align:center;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    & .checkout > .table > table {
+        padding-left:10vw;
+        padding-right:10vw;
+        width:100%;
+        overflow-x:auto;
+        @media(max-width:@navbar-collapse-breakpoint){
+            padding:0;
+        }
+        @media(max-width:600px){
+            display:none;
+        }
+
+    }
+    & .checkout > .table > table > tbody > tr > td {
+        width:20%;
+    }
+    & .checkout > .table > table > tbody > tr > th {
+        text-align:center;
+        border-bottom: 1px solid #222;
+        padding: 5px;
+        font-size:2em;
+        font-weight:100;
+    }
+    & .checkout > .table > table > tbody > tr > td {
+        text-align:center;
+    }
+    & .checkout > .table > table > tbody > tr > .productimage {
+        width:175px;
+    }
+    & .checkout > .table > table > tbody > tr > td > img {
+        height:175px;
+        width:175px;
+        @media(max-width:@navbar-collapse-breakpoint){
+            height:125px;
+            width:125px;
+        }
+    }
+    & .checkout > .table > table > tbody > tr > .q  {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:15%;
+    }
+    & .checkout > .table > table > tbody > tr > td > .form-control {
+        width:15%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+    & .checkout > .total {
+        width:100%;
+        border-top: 1px solid #222;
+        border-bottom: 1px solid #222;
+    }
+    & .checkout > .subTotal {
+        text-align:right;
+        font-family:inherit;
+        width:100%;
+
+    }
+    & .checkout > .buy {
+        text-align:right;
+        width:100%;
+    }
+    & .checkout > .buy > .form-group {
+        width:20%;
+        float:right;
+
+    }
+    & .checkout > .buy > .form-group > .form-control {
+        height:55px;
+    }
+
+    
+}
+.footer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        background-color: #020202 !important;
+        text-align: center;
+        padding-top: 60px;
+        font-size: 1em;
+    
+    & .copyright {
+        grid-column: 1;
+        color: #666;
+        font-size: 1em;
+
+
+    }
+    & .links {
+        grid-column: 3;
+    }
+    & .links > a {
+        margin: 30px;
+        color: #666666;
+        font-size: 1em;
+        @media(max-width:500px){
+            margin:15px;
+        }
+        @media(max-width:400px){
+            margin:5px;
+        }
+ 
+
+    }
+}
+header {
+    text-align:center;
+    }
+
+    // Component
+
+.navbar {
+    justify-content: space-around;
+    display:flex;
+    white-space: nowrap; 
+    flex-flow: row nowrap;
+    // Brand
+    & > .brand {
+        background:url(../img/logo.jpg) 0px 0px / cover no-repeat;
+        background-position:  stretch; 
+        background-repeat: no-repeat;
+        height:64px;
+        width:320px;
+        align-self:center;
+        margin-left:auto;
+        margin-right:auto;
+        font-size: 16px;
+        color: #777;
+        margin-top: round((@navbar-height - 20) / 2);
+        margin-bottom: round((@navbar-height - 20) / 2);
+        @media (max-width: 1150px){
+            height:45px;
+            width:225px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        @media (max-width: 390px){
+            height: 25px;
+            width: 125px;
+        }
+    }
+
+
+    // Toggle button
+    & > .toggle {
+        border: 0;
+        background-color: transparent;
+        outline: none;
+        border: 0;
+        display: inline-block;
+        background-color: transparent;
+        background-image: none;
+        vertical-align: middle;
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        touch-action: manipulation;
+        user-select: none;
+        padding: round((@navbar-height - 20) / 2);
+
+        @media (min-width: @navbar-collapse-breakpoint) {
+            display: none;
+        }
+    }
+
+    & > .toggle > .icon {
+        position: relative;
+        margin-top: 8px;
+        margin-bottom: 8px;
+
+        &,
+        &:before,
+        &:after {
+            display: block;
+            width: 24px;
+            height: 3px;
+            transition: background-color 0.3s linear, transform 0.3s linear;
+            background-color: #555555;
+        }
+
+        &:before, &:after { position: absolute; content: ""; }
+        &:before { top: -8px; }
+        &:after { top: 8px; }
+    }
+
+    & > .toggle.-active > .icon {
+        background-color: transparent;
+    
+        &:before { transform: translateY(8px) rotate(45deg); }
+        &:after { transform: translateY(-8px) rotate(-45deg); }
+    }
+
+    // List of items
+    & > .list {
+        display: none;
+        flex-flow: row nowrap;
+        align-items: center;
+        white-space: nowrap;
+        padding-left:5vw;
+        padding-right:5vw;
+        @media (min-width: @navbar-collapse-breakpoint) {
+            display: flex;
+        }
+
+        @media (max-width: @navbar-collapse-breakpoint) {
+            position: fixed;
+            top: @navbar-height;
+            left: 0;
+            width: 100%;
+            z-index:1;
+            overflow-y: hidden;
+            overflow-x: auto;
+            border-top: 1px solid @navbar-border;
+            background-color: @navbar-background;
+        }
+        @media (max-width: 1080px) {
+            padding-left:0px;
+            padding-right:0px;
+        }
+    
+
+        &.-on {
+            display: block;
+        }
+    
+    }
+    & > .list > .item {
+        display: block;
+        flex-shrink: 0;
+        height: @navbar-height;
+        line-height: @navbar-height;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        text-transform: uppercase;
+        color: @navbar-item-color;
+        font-size: @navbar-item-font-size;
+        
+    }
+    //  
+    & > .list > .item.-link {
+        line-height: @navbar-height + @navbar-item-border-width;
+        color: @navbar-item-color;
+        border-bottom: @navbar-item-border-width solid @navbar-item-border;
+
+    //on hover
+        &.-active,
+        &:hover,
+        &:focus {
+            color: @navbar-item-active-color;
+            border-bottom-color: @navbar-item-active-border;
+        }
+        
+    }
+}

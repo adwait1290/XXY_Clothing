@@ -1,0 +1,28 @@
+
+    <div class="navbar-component">
+
+   
+      <!-- Class `area` is a container -->
+      <div class="navbar area">
+        <!-- Logo -->
+        <a href="#" class="brand"></a>
+        <!-- List of links -->
+        <nav role="navigation" id="navigation" class="list">
+          <a href="{% url 'home' %}" class="item -link">Home</a>
+          <a href="{% url 'home' %}#aboutus" class="item -link">About</a>
+          <a href="{% url 'home' %}#contactus" class="item -link">Contact</a>
+          <a href="{% url 'catalog:product_list' %}" class="item -link">Catalog</a>
+          {% if cart_count > 0 %}<a href="{% url 'checkout:cart_item' %}" class="item -link">Cart ({{cart_count}})}</a>{% endif %}
+          {% if authenticated %}<a href="{% url 'account_logout' %}" class="item -link">Logout</a>{% else %}<a href="{% url 'account_login' %}" class="item -link">Sign In / Sign Up</a>{% endif %}
+          
+          
+
+        </nav>
+        <!-- Button to toggle the display menu  -->
+        <button data-collapse data-target="#navigation" class="toggle">
+          <!-- Hamburger icon -->
+          <span class="icon"></span>
+        </button>
+      </div>
+    </div>
+   

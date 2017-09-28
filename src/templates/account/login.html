@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="main-component">
+    <div class="signin" style="height:70vh">
+    <h1>{% trans "Sign In" %}</h1>
+
+
+
+
+      
+         <p>{% blocktrans %}If you have not created an account yet, then please
+        <a href="/signup">sign up</a> first.{% endblocktrans %}</p>
+
+<form class="form-group" action="/auth/" method="POST"> {% csrf_token %}
+    <div data-role="fieldcontain">
+        <label for="username">Username:</label><input type="text" class="form-control center" name="email" id="email" value="" />
+    </div>
+    <div data-role="fieldcontain">
+        <label for="password">Password:</label><input type="password" class="form-control" name="password" id="password" value="" />
+    </div>    
+    <button type="submit" class="btn btn-primary" name="submit" value="submit-value">Sign in</button>
+</form>
+<body>
+
+        <a class="btn btn-link button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            <hr>
+              <a class="btn btn-block btn-github" href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+            <a class="btn btn-block btn-social btn-twitter" href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a><br>
+            <a class="btn btn-block btn-facebook" href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
+        
+    </div>
+</div>
+{% endblock %}

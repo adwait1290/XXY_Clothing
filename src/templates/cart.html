@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Checkout
+{% endblock %}
+
+{% block content %}
+<div class="main-component">
+    <div class="checkout" id="checkout">
+        <div class="title">
+            <h2 class="myCart">My Cart </h2>
+
+        </div>
+        <div class="table">
+        
+        
+                
+            <table class="table-responsive">
+
+                <tr>
+                    <th>PRODUCT</th>
+                    <th>ITEM</th>
+                    <th>QUANTITY</th>
+                    <th>ACTION</th>
+                    <th>TOTAL</th>
+                </tr>
+                {% for form in formset %}
+                {% if form.instance %}
+                    
+                <tr class="productrow">
+                    <td class="productimage">
+                        <img src="{{ form.instance.product.image.url }}">
+                    </td>
+                    <td>
+                        <h5>{{ form.instance.product.slug }}</h5>
+                        <h6>SKU: 00340XE</h6>
+                        <h6>Color: Beige</h6>
+                        <h6>${{ form.instance.price|floatformat:"2" }}</h6>
+                        
+                    </td>
+                    <td class="q">
+                        <a href="/checkout/minus/{{form.instance.id}}" style="padding:1vw;" class="minus"><h2>&minus;</h2></a>
+                        <h4 class="quantity">{{ form.instance.quantity }}</h4>
+                        <a href="/checkout/plus/{{form.instance.id}}" style="padding:1vw;" class="plus"><h2>&oplus;</h2></a>
+                    </td>
+                    <td>
+                        <form action="/checkout/remove/{{form.instance.id}}" method="delete">
+                            <button value="on" type="submit" name="" class="btn btn-danger btn-sm">REMOVE</button>
+                        </form>
+                    </td>
+                    <td class="price">${{ form.instance.price  }}</td>
+                </tr>
+                {% else %}
+                <h2 style="text-align:center;"> You have no items in your list! </h2>
+                <h3 style="text-align:center;"><a href="{% url 'catalog:product_list' %}">Return to Store?</a></h3>
+                {% endif %}
+                {% endfor %}
+            </table>
+            
+        </div>
+        
+                {% for form in formset %}
+                {% if form.instance %}
+                <div class="smallform" style="display:none">
+                        <img class="cartimg" src="{{ form.instance.product.image.url }}">
+                        <div class="cartquantity">
+                        <a href="/checkout/minus/{{form.instance.id}}"  class="minus"><h2>&minus;</h2></a>
+                        <h4 class="quantity">{{ form.instance.quantity }}</h4>
+                        <a href="/checkout/plus/{{form.instance.id}}" class="plus"><h2>&oplus;</h2></a>
+                        </div>
+                        <form action="/checkout/remove/{{form.instance.id}}" method="delete">
+                            <button value="on" type="submit" name="" class="btn btn-danger btn-sm">REMOVE</button>
+                        </form>
+                        <div class="price">${{ form.instance.price  }}</div></div>
+                    
+                    
+                {% endif %}
+                {% endfor %}
+        
+        <div class="total">
+
+        </div>
+ 
+        <div class="subTotal">
+            <h4 class="sTotal">{{ form.instance.price  }}</h4>
+            <h5 style="font-style: italic">Discounts, shipping and tax will be calculated in checkout.</h5>
+        </div>
+        <div class="buy">
+            <form class="form-group" action="" method="post">
+            {% csrf_token %}
+            <input type="hidden"
+               value="/finish"
+               name="redirect-url" />
+                <input class="form-control" id='customButton' type="submit" name="" value="CHECKOUT">
+                <script src="https://checkout.stripe.com/checkout.js"></script>
+
+
+
+<script>
+var handler = StripeCheckout.configure({
+  key: 'pk_test_pGskG00Frl8ijalVUDncOZNd',
+  image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+  locale: 'auto',
+  token: function(token) {
+    stripeToken = token;
+    var postUrl = 'http://localhost:8000/checkout/finish';
+    $.ajax({
+        url: postUrl,
+        type: "POST",
+        data: {'email': token.card.name, 'ip': token.client_ip, 'last4': token.card.last4, 'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val()},
+        traditional: true,
+        success: function(data){
+        
+            
+            setTimeout(function(){
+            $('.main-component').html('<h2 style="text-align:center; margin: 0 auto;padding-top:5vh; padding-left:10vw; padding-right:10vw;color:white;padding-bottom:5vh; height:70vh;">' +'Email sent to: ' + token.card.name + ". your ip is " + token.client_ip + ". Your card with last 4 digits of " + token.card.last4 + " was charged. Redirecting you home in 5 seconds.</h2>");
+        },1000);
+            setTimeout(function(){
+                window.location.href = "/";
+            },4000)
+            console.log(result);
+        }
+    })
+  }
+});
+
+document.getElementById('customButton').addEventListener('click', function(e) {
+  // Open Checkout with further options:
+  handler.open({
+    name: 'XXY Shopping',
+    description: 'The best shirts around the block',
+    amount: total * 100,
+  });
+  e.preventDefault();
+  
+});
+
+// Close Checkout on page navigation:
+window.addEventListener('popstate', function(e) {
+    e.setTimeout(function(){
+    window.location.href = 'localhost:8000';
+    document.location.href = '/finish';
+  },500);
+  handler.close(); 
+
+
+});
+</script>
+            </form>
+            
+        </div>
+    </div>
+</div>
+        <script type="application/javascript">
+        var total = 0;
+        var totalQuantity = 0;
+        $(document).ready(function calculate() {
+            
+            $('tr.productrow').each(function() {
+                var itemPriceText = $(this).find('td.price').text();
+                itemPriceString = itemPriceText.replace('$','');
+                var itemQuantity = parseFloat($(this).find('h4.quantity').text());
+                totalQuantity += itemQuantity;
+                console.log(itemQuantity);
+                var itemPrice = parseFloat(itemPriceString) * itemQuantity;
+                console.log(itemPrice);
+                total += itemPrice;
+            })
+            $('.sTotal').text("$" + total.toFixed(2));
+            $('.myCart').text("My Cart (" + totalQuantity + ")");
+            var viewportWidth = $(window).width();
+            var viewportHeight = $(window).height();
+            if( viewportWidth < 600 ){
+                $('.smallform').fadeIn(200);
+                console.log("small form initiated");
+            }
+            $( window ).resize(function() {
+            if( viewportWidth < 600 ){
+                $('.smallform').fadeIn(200);
+                console.log("small form initiated");
+            }
+        })
+       
+        })
+                </script>
+        {% endblock %}

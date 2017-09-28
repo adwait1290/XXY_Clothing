@@ -1,0 +1,13 @@
+<div class="product">
+        <p>{{ product }}</p>
+        <p>${{ product.price }}</p>
+    <div class="image">
+        <a href="{{ product.get_absolute_url }}" style=""><img src="{{product.image.url}}" alt=""></a>
+    </div>
+    <div class="description"> 
+        <p>
+            <a href="{{ product.get_absolute_url }}" style="background-color:black; border-color:#76828f" class="btn btn-success" role="button">VIEW DETAILS
+            <a href="{% url 'checkout:create_cartitem' product.slug %}" class="btn btn-default" role="button">Add To Cart</a>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        {% load static from staticfiles %}
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/theme.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-social.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"/>
+        
+
+        
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>XXY INC.{% if request.user.is_authenticated %}<Logged In>{% else %}<Not Logged In>{% endif %}</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+    </head>
+    <body>
+    
+      
+    {% include 'navbar.html' %}
+    
+    {% block content %}
+    {% endblock %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'javascript/ie10-viewport-bug-workaround.js' %}"></script>
+    <script type="text/javascript" src="{% static 'javascript/jquery-3.2.1.min.js' %}"></script>
+   
+    {% include 'footer.html' %}
+ 
+    
+
+
+    
+
+</body>
+
+<script type="text/javascript" src="{% static 'javascript/responsive_menu.js' %}"></script> 
+
+</html>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load pagination %}
+{% block title %}
+    List of products | {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div class="main-component">
+        <h1>FALL COLLECTION</h1>
+    
+    <div class="showcase">
+        {% for product in products  %}
+            {% include '_product.html' %}
+        {% endfor %}
+    </div>
+    </div>
+    
+{% endblock %}

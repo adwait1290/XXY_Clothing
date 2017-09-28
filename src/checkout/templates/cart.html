@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+<div class="main-component">
+    <div class="checkout">
+        <div class="title">
+            <h2 class="myCart">My Cart </h2>
+
+        </div>
+        <div class="table">
+        
+        
+                
+            <table class="table-responsive">
+
+                <tr>
+                    <th>PRODUCT</th>
+                    <th>ITEM</th>
+                    <th>QUANTITY</th>
+                    <th>ACTION</th>
+                    <th>TOTAL</th>
+                </tr>
+                {% for form in formset %}
+                {% if form.instance %}
+                    
+                <tr class="productrow">
+                    <td class="productimage">
+                        <img src="{{ form.instance.product.image.url }}">
+                    </td>
+                    <td>
+                        <h5>{{ form.instance.product.slug }}</h5>
+                        <h6>SKU: 00340XE</h6>
+                        <h6>Color: Beige</h6>
+                        <h6>${{ form.instance.price|floatformat:"2" }}</h6>
+                        
+                    </td>
+                    <td class="q">
+                        <a href="/checkout/minus/{{form.instance.id}}" class="minus">-</a>
+                        <h4 class="quantity">{{ form.instance.quantity }}</h4>
+                        <a href="/checkout/plus/{{form.instance.id}}" class="plus">+</a>
+                    </td>
+                    <td>
+                        <form action="/checkout/remove/{{form.instance.id}}" method="delete">
+                            <button value="on" type="submit" name="" class="btn btn-danger btn-sm">REMOVE</button>
+                        </form>
+                    </td>
+                    <td class="price">${{ form.instance.price  }}</td>
+                </tr>
+                {% else %}
+                <h2 style="text-align:center;"> You have no items in your list! </h2>
+                <h3 style="text-align:center;"><a href="{% url 'catalog:product_list' %}">Return to Store?</a>
+                {% endif %}
+                {% endfor %}
+            </table>
+            <div class="smallform" style="display:none">
+                {% for form in formset %}
+                {% if form.instance %}
+                        <img class="cartimg" src="{{ form.instance.product.image.url }}">
+                        <div class="cartquantity">
+                        <a href="/checkout/minus/{{form.instance.id}}" class="minus">-</a>
+                        <h4 class="quantity">{{ form.instance.quantity }}</h4>
+                        <a href="/checkout/plus/{{form.instance.id}}" class="plus">+</a>
+                        <form action="/checkout/remove/{{form.instance.id}}" method="delete">
+                            <button value="on" type="submit" name="" class="btn btn-danger btn-sm">REMOVE</button>
+                        </form>
+                        <div class="price">${{ form.instance.price  }}</div>
+                    {% else %}
+                <h2 style="text-align:center;"> You have no items in your list! </h2>
+                <h3 style="text-align:center;"><a href="{% url 'catalog:product_list' %}">Return to Store?</a>
+                {% endif %}
+                {% endfor %}
+        </div>
+        <div class="total">
+
+        </div>
+
+        <div class="subTotal">
+            <h4 class="sTotal">{{ form.instance.price  }}</h4>
+            <h5 style="font-style: italic">Discounts, shipping and tax will be calculated in checkout.</h5>
+        </div>
+        <div class="buy">
+            <form class="form-group" action="" method="post">
+                <input class="form-control" type="submit" name="" value="CHECKOUT">
+            </form>
+        </div>
+        <script>
+        $(document).ready(function(){
+            console.log('started');
+            var viewportWidth = $(window).width();
+            var viewportHeight = $(window).height();
+            if( viewportWidth < 600 ){
+                $('.smallform').fadeIn(200);
+                console.log("small form initiated");
+            }
+        });
+        </script>
+        <script type="text/javascript" src="{% static 'javascript/calculate.js' %}"></script>
+             {% endblock %}

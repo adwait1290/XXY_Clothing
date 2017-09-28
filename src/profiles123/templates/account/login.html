@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+<div class="main-component">
+    <div class="signin">
+    <h1>{% trans "Sign In" %}</h1>
+
+      
+
+    
+
+      
+         <p>{% blocktrans %}If you have not created an account yet, then please
+        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+
+
+        <form method="post" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <a class="btn btn-link button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            <button class="btn btn-default" type="submit">{% trans "Sign In" %}</button>
+        </form>
+            <hr>
+              <button class="btn btn-block btn-github" href="{% url 'social:begin' 'github' %}">Login with GitHub</button><br>
+            <button class="btn btn-block btn-social btn-twitter" href="{% url 'social:begin' 'twitter' %}">Login with Twitter</button><br>
+            <button class="btn btn-block btn-facebook" href="{% url 'social:begin' 'facebook' %}">Login with Facebook</button>
+        
+    </div>
+</div>
+{% endblock %}
