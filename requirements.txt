@@ -62,7 +62,7 @@ oauthlib==2.0.2
 olefile==0.44
 parsel==1.2.0
 pathtools==0.1.2
-Pillow==4.1.0
+Pillow==6.2.0
 pprint==0.1
 psycopg2==2.7.1
 pyasn1==0.1.9
