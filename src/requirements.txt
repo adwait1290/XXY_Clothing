@@ -18,7 +18,7 @@ constantly==15.1.0
 cryptography==2.0.2
 cssselect==1.0.1
 cycler==0.10.0
-Django==1.11.4
+Django==1.11.29
 django-allauth==0.32.0
 django-appconf==1.0.2
 django-boto==0.3.12
